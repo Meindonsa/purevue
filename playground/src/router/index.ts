@@ -8,6 +8,7 @@ import BadgePage from "@/pages/BadgePage.vue";
 import AvatarPage from "@/pages/AvatarPage.vue";
 import SpinnerPage from "@/pages/SpinnerPage.vue";
 import SkeletonPage from "@/pages/SkeletonPage.vue";
+import DividerPage from "@/pages/DividerPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,6 +19,7 @@ const router = createRouter({
     {path: "/button", component: ButtonPage},
     {path: "/avatar", component: AvatarPage},
     {path: "/spinner", component: SpinnerPage},
+    {path: "/divider", component: DividerPage},
     {path: "/skeleton", component: SkeletonPage},
     {path: "/password", component: PasswordPage},
     {path: "/textarea", component: TextareaPage},
