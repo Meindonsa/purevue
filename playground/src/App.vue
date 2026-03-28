@@ -8,6 +8,7 @@ const menu = [
   {path:"/badge", name:"Badge"},
   {path:"/avatar", name:"Avatar"},
   {path:"/spinner", name:"Spinner"},
+  {path:"/skeleton", name:"Skeleton"},
 ]
 </script>
 
@@ -78,7 +79,7 @@ const menu = [
     </div>
   </aside>
 
-  <div class="p-4 sm:ml-64">
+  <div class="px-4 py-10 sm:ml-64">
     <RouterView/>
   </div>
 
