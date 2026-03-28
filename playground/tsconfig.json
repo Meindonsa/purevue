@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@purevue/core": ["../packages/core/src/index.ts"]
     }
   },
   "include": ["src/**/*", "env.d.ts"]
