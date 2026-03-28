@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { InputProps } from './Input.types'
+import type {InputProps, InputSize} from './Input.types'
 
 const props = withDefaults(defineProps<InputProps>(), {
   type: 'text',
@@ -91,7 +91,7 @@ const hintColorClasses: Record<string, string> = {
           'transition-all duration-[--duration-fast]',
           'disabled:opacity-50 disabled:cursor-not-allowed',
           'read-only:bg-surface-50 read-only:cursor-default',
-          sizeClasses[size],
+          sizeClasses[size as InputSize],
           stateClasses[computedState],
           $slots.prefix ? 'pl-9' : '',
           $slots.suffix ? 'pr-9' : '',
