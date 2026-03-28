@@ -10,6 +10,7 @@ const menu = [
   {path:"/spinner", name:"Spinner"},
   {path:"/skeleton", name:"Skeleton"},
   {path:"/divider", name:"Divider"},
+  {path:"/progressBar", name:"ProgressBar"},
 ]
 </script>
 

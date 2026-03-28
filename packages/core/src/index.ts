@@ -8,6 +8,7 @@ export * from './components/Divider'
 export * from './components/Skeleton'
 export * from './components/Password'
 export * from './components/Textarea'
+export * from './components/ProgressBar'
 // Composables
 // export * from './composables'
 
