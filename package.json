@@ -1,0 +1,24 @@
+{
+  "name": "purevue",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter playground dev",
+    "build": "pnpm --filter @purevue/core build",
+    "test": "pnpm --filter @purevue/core test",
+    "lint": "eslint . --ext .vue,.ts,.tsx"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^10.8.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.4.0",
+    "vue-eslint-parser": "^10.4.0"
+  }
+}
