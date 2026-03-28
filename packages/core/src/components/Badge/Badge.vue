@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { BadgeProps } from './Badge.types'
+import {BadgeProps, BadgeShape, BadgeSize, BadgeVariant} from './Badge.types'
 
-const props = withDefaults(defineProps<BadgeProps>(), {
+withDefaults(defineProps<BadgeProps>(), {
   variant: 'primary',
   size: 'md',
   shape: 'rounded',
@@ -59,15 +59,15 @@ const shapeClasses: Record<string, string> = {
   <span
       :class="[
       'inline-flex items-center border font-medium',
-      variantClasses[variant],
-      sizeClasses[size],
-      shapeClasses[shape],
+      variantClasses[variant as BadgeVariant],
+      sizeClasses[size as BadgeSize],
+      shapeClasses[shape as BadgeShape],
     ]"
   >
     <!-- Dot -->
     <span
         v-if="dot"
-        :class="['rounded-full shrink-0', dotVariantClasses[variant], dotSizeClasses[size]]"
+        :class="['rounded-full shrink-0', dotVariantClasses[variant as BadgeVariant], dotSizeClasses[size as BadgeSize]]"
     />
 
     <!-- Prefix slot (icône gauche) -->
@@ -85,7 +85,7 @@ const shapeClasses: Record<string, string> = {
         class="flex items-center opacity-60 hover:opacity-100 transition-opacity ml-0.5 cursor-pointer"
         @click.stop="emit('close')"
     >
-      <svg :class="iconSizeClasses[size]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <svg :class="iconSizeClasses[size as BadgeSize]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
         <line x1="18" y1="6" x2="6" y2="18" />
         <line x1="6" y1="6" x2="18" y2="18" />
       </svg>

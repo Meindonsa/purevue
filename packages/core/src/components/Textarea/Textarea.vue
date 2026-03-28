@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, nextTick } from 'vue'
-import type { TextareaProps } from './Textarea.types'
+import {ResizeMode, TextareaProps} from './Textarea.types'
+import type {InputSize} from "../Input";
 
 const props = withDefaults(defineProps<TextareaProps>(), {
   size: 'md',
@@ -117,9 +118,9 @@ const resizeClass: Record<string, string> = {
         'transition-all duration-[--duration-fast]',
         'disabled:opacity-50 disabled:cursor-not-allowed',
         'read-only:bg-surface-50 read-only:cursor-default',
-        sizeClasses[size],
+        sizeClasses[size as InputSize],
         stateClasses[isOverLimit ? 'error' : computedState],
-        resizeClass[resize],
+        resizeClass[resize as ResizeMode],
       ]"
         v-bind="$attrs"
         @input="onInput"

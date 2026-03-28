@@ -1,4 +1,4 @@
-import type { InputSize, InputState } from '../Input/Input.types'
+import type { InputSize, InputState } from '../Input'
 
 export type ResizeMode = 'none' | 'vertical' | 'horizontal' | 'both' | 'auto'
 
