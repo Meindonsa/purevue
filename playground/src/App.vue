@@ -7,6 +7,7 @@ const menu = [
   {path:"/textarea", name:"Textarea"},
   {path:"/badge", name:"Badge"},
   {path:"/avatar", name:"Avatar"},
+  {path:"/spinner", name:"Spinner"},
 ]
 </script>
 
