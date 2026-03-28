@@ -1,116 +1,83 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Button, Input, Password, Textarea } from '@purevue/core'
-
-const email = ref('')
-const text = ref('')
-
-const p1 = ref('')
-const p2 = ref('')
-const p3 = ref('')
-
-function onRules(results: { key: string; label: string; passed: boolean }[]) {
-  console.log(results)
-}
+const menu = [
+  {path:"/", name:"Setup"},
+  {path:"/button", name:"Boutons"},
+  {path:"/password", name:"Password"},
+  {path:"/input", name:"Input text"},
+  {path:"/textarea", name:"Textarea"},
+  {path:"/badge", name:"Badge"},
+]
 </script>
 
 <template>
-  <main class="p-8 bg-surface-50 min-h-screen flex flex-col gap-8">
 
-    <section>
-      <h2 class="text-lg font-semibold text-surface-800 mb-4">Button</h2>
-      <div class="flex flex-wrap gap-3">
-        <Button variant="primary">Primary</Button>
-        <Button variant="secondary">Secondary</Button>
-        <Button variant="outline">Outline</Button>
-        <Button variant="ghost">Ghost</Button>
-        <Button variant="danger">Danger</Button>
-        <Button loading>Loading</Button>
-        <Button disabled>Disabled</Button>
+  <nav class="fixed top-0 z-50 w-full bg-primary-800 border-b border-b-primary-700">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center justify-start rtl:justify-end">
+          <button data-drawer-target="top-bar-sidebar" data-drawer-toggle="top-bar-sidebar" aria-controls="top-bar-sidebar" type="button" class="sm:hidden text-heading bg-transparent box-border border border-transparent hover:bg-neutral-secondary-medium focus:ring-4 focus:ring-neutral-tertiary font-medium leading-5 rounded-base text-sm p-2 focus:outline-none">
+            <span class="sr-only">Open sidebar</span>
+            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+            </svg>
+          </button>
+          <a href="https://flowbite.com" class="flex ms-2 md:me-24">
+            <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 me-3" alt="FlowBite Logo" />
+            <span class="self-center text-lg font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+          </a>
+        </div>
+        <div class="flex items-center">
+          <div class="flex items-center ms-3">
+            <div>
+              <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
+              </button>
+            </div>
+            <div class="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44" id="dropdown-user">
+              <div class="px-4 py-3 border-b border-default-medium" role="none">
+                <p class="text-sm font-medium text-heading" role="none">
+                  Neil Sims
+                </p>
+                <p class="text-sm text-body truncate" role="none">
+                  neil.sims@flowbite.com
+                </p>
+              </div>
+              <ul class="p-2 text-sm text-body font-medium" role="none">
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Settings</a>
+                </li>
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Earnings</a>
+                </li>
+                <li>
+                  <a href="#" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded" role="menuitem">Sign out</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </nav>
 
-    <section class="flex flex-col gap-4 max-w-sm">
-      <h2 class="text-lg font-semibold text-surface-800">Input — type & validation</h2>
-      <Input v-model="email" type="email" label="Email" placeholder="vous@exemple.com"
-             help-text="Nous ne partagerons jamais votre email." />
-      <Input v-model="text" type="text" label="Nom" placeholder="Votre nom"
-             help-text="Aide en haut" help-text-position="top" />
-    </section>
+  <aside id="top-bar-sidebar" class="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <div class="h-full px-3 py-4 overflow-y-auto bg-primary-800 border-e border-default">
+      <ul class="mt-15 space-y-2 font-medium">
+        <li v-for="item of menu">
+          <RouterLink activeClass="text-white" :to="item.path" class="flex items-center px-2 py-1.5 text-gray-400 rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+            <span class="ms-3">{{ item.name }}</span>
+          </RouterLink>
+        </li>
+      </ul>
+    </div>
+  </aside>
 
-    <section class="flex flex-col gap-4 max-w-sm">
-      <h2 class="text-lg font-semibold text-surface-800">Input — States</h2>
-      <Input label="Success" state="success" model-value="Valide" />
-      <Input label="Warning" state="warning" model-value="Attention" />
-      <Input label="Erreur" error="Ce champ est requis." />
-    </section>
+  <div class="p-4 sm:ml-64">
+    <RouterView/>
+  </div>
 
-    <section class="flex flex-col gap-4 max-w-sm">
-      <h2 class="text-lg font-semibold text-surface-800">Mode 1 — options object</h2>
-      <Password
-          v-model="p1"
-          label="Mot de passe"
-          placeholder="Saisissez votre mot de passe"
-          :min="8" :max="16"
-          :options="{ number: true, lower: true, upper: true, special: true }"
-      />
-    </section>
-
-    <section class="flex flex-col gap-4 max-w-sm">
-      <h2 class="text-lg font-semibold text-surface-800">Mode 2 — props booléennes</h2>
-      <Password
-          v-model="p2"
-          label="Mot de passe"
-          placeholder="Saisissez votre mot de passe"
-          :min="8"
-          number lower upper special
-      />
-    </section>
-
-    <section class="flex flex-col gap-4 max-w-sm">
-      <h2 class="text-lg font-semibold text-surface-800">Mode 3 — pattern custom</h2>
-      <Password
-          v-model="p3"
-          label="Code PIN"
-          placeholder="Chiffres uniquement"
-          :min="4" :max="6"
-          pattern="^\d+$"
-      />
-    </section>
-
-    <section class="flex flex-col gap-4 max-w-sm">
-      <h2 class="text-lg font-semibold text-surface-800">Mode 3 — pattern custom</h2>
-      <Password v-model="p1" :min="8" number upper show-helper />
-      <Password
-          upper
-          number
-          special
-          v-model="p2"
-          :min="8"
-          :show-helper="true"
-          @rules="onRules($event)"
-      />
-
-    </section>
-
-    <section class="flex flex-col gap-4 max-w-sm">
-      <h2 class="text-lg font-semibold text-surface-800">Textarea</h2>
-
-      <Textarea v-model="text" label="Par défaut" placeholder="Saisissez..." />
-
-      <Textarea v-model="text" label="Avec compteur" placeholder="Max 200 caractères"
-                :maxlength="200" show-count />
-
-      <Textarea v-model="text" label="Auto-resize" placeholder="Grandit automatiquement..."
-                resize="auto" :max-rows="6" />
-
-      <Textarea v-model="text" label="States" state="success"
-                help-text="Contenu valide." />
-
-      <Textarea label="Erreur" error="Ce champ est requis." />
-
-      <Textarea v-model="text" label="Désactivé" disabled placeholder="Disabled" />
-    </section>
-
-  </main>
 </template>
