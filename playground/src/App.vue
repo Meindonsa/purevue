@@ -9,6 +9,7 @@ const menu = [
   {path:"/avatar", name:"Avatar"},
   {path:"/spinner", name:"Spinner"},
   {path:"/skeleton", name:"Skeleton"},
+  {path:"/divider", name:"Divider"},
 ]
 </script>
 
@@ -67,7 +68,7 @@ const menu = [
     </div>
   </nav>
 
-  <aside id="top-bar-sidebar" class="fixed top-0 left-0 z-40 w-64 h-full transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+  <aside id="top-bar-sidebar" class="fixed top-0 left-0 z-40 w-50 h-full transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
     <div class="h-full px-3 py-4 overflow-y-auto bg-primary-800 border-e border-default">
       <ul class="mt-15 space-y-2 font-medium">
         <li v-for="item of menu">
@@ -79,7 +80,7 @@ const menu = [
     </div>
   </aside>
 
-  <div class="px-4 py-10 sm:ml-64">
+  <div class="bg-surface-50 px-4 py-10 sm:ml-64">
     <RouterView/>
   </div>
 
