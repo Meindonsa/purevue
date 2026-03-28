@@ -1,0 +1,15 @@
+@layer base {
+    .dark {
+        --color-surface-0:   oklch(14% 0 0);
+        --color-surface-50:  oklch(18% 0 0);
+        --color-surface-100: oklch(22% 0 0);
+        --color-surface-200: oklch(28% 0 0);
+        --color-surface-300: oklch(36% 0 0);
+        --color-surface-400: oklch(46% 0 0);
+        --color-surface-500: oklch(58% 0 0);
+        --color-surface-600: oklch(70% 0 0);
+        --color-surface-700: oklch(82% 0 0);
+        --color-surface-800: oklch(90% 0 0);
+        --color-surface-900: oklch(95% 0 0);
+    }
+}
