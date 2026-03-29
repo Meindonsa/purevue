@@ -13,6 +13,7 @@ export * from './components/Password'
 export * from './components/Textarea'
 export * from './components/Container'
 export * from './components/Scrollable'
+export * from './components/Pagination'
 export * from './components/ProgressBar'
 // Composables
 // export * from './composables'
