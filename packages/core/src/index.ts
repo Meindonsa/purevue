@@ -1,5 +1,6 @@
 // Components
 export * from './components/Card'
+export * from './components/Tabs'
 export * from './components/Input'
 export * from './components/Panel'
 export * from './components/Badge'
