@@ -47,6 +47,15 @@ const gridClass = computed(() =>
         ? `grid grid-cols-${props.columns} gap-3`
         : 'flex flex-col gap-3'
 )
+
+const gridStyle = computed(() => {
+  if (props.columns === 1) return {}
+  return {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${props.columns}, minmax(0, 1fr))`,
+    gap: '0.75rem',
+  }
+})
 </script>
 
 <template>
@@ -68,7 +77,7 @@ const gridClass = computed(() =>
     </div>
 
     <!-- Options -->
-    <div :class="gridClass">
+    <div :class="gridClass" :style="gridStyle">
       <Checkbox
           v-for="opt in options"
           :key="opt.value"

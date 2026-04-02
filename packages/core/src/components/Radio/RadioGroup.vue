@@ -32,14 +32,20 @@ const containerClasses = computed(() => {
   if (props.variant === 'button') {
     return 'flex flex-row gap-0 border border-surface-200 rounded-lg overflow-hidden w-fit'
   }
-  if (props.orientation === 'horizontal') {
-    return props.columns > 1
-        ? `grid grid-cols-${props.columns} gap-3`
-        : 'flex flex-row flex-wrap gap-4'
+  if (props.orientation === 'horizontal' && props.columns === 1) {
+    return 'flex flex-row flex-wrap gap-4'
   }
-  return props.columns > 1
-      ? `grid grid-cols-${props.columns} gap-3`
-      : 'flex flex-col gap-3'
+  return ''
+})
+
+const containerStyle = computed(() => {
+  if (props.variant === 'button') return {}
+  if (props.orientation === 'horizontal' && props.columns === 1) return {}
+  return {
+    display: 'grid',
+    gridTemplateColumns: `repeat(${props.columns}, minmax(0, 1fr))`,
+    gap: '0.75rem',
+  }
 })
 
 // ----------------------------------------
@@ -81,7 +87,7 @@ const descSizeClasses: Record<string, string> = {
     <span v-if="label" class="text-sm font-semibold text-surface-700">{{ label }}</span>
 
     <!-- Classic -->
-    <div v-if="variant === 'classic'" :class="containerClasses">
+    <div v-if="variant === 'classic'" :class="containerClasses" :style="containerStyle">
       <Radio
           v-for="opt in options"
           :key="opt.value"
@@ -97,7 +103,7 @@ const descSizeClasses: Record<string, string> = {
     </div>
 
     <!-- Card -->
-    <div v-else-if="variant === 'card'" :class="containerClasses">
+    <div v-else-if="variant === 'card'" :class="containerClasses" :style="containerStyle">
       <div
           v-for="opt in options"
           :key="opt.value"
