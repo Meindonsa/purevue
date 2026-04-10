@@ -22,6 +22,7 @@ export * from './components/Container'
 export * from './components/DatePicker'
 export * from './components/Scrollable'
 export * from './components/Pagination'
+export * from './components/ColorPicker'
 export * from './components/ProgressBar'
 // Composables
 // export * from './composables'
