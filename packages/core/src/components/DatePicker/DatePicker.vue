@@ -34,7 +34,9 @@ const rangeStart = ref<Date | null>(null)
 // ----------------------------------------
 const displayFormat = computed(() => {
   if (props.format) return props.format
-  return props.mode === 'datetime' ? 'DD/MM/YYYY HH:mm' : 'DD/MM/YYYY'
+  if (props.mode === 'datetime') return 'DD/MM/YYYY HH:mm'
+  if (props.mode === 'time')     return 'HH:mm'
+  return 'DD/MM/YYYY'
 })
 
 const displayValue = computed(() => {
@@ -82,12 +84,10 @@ function onSelectDate(date: Date) {
 }
 
 function onTimeChange(hours: number, minutes: number) {
-  if (props.modelValue instanceof Date) {
-    const d = new Date(props.modelValue)
-    d.setHours(hours, minutes)
-    emit('update:modelValue', d)
-    emit('change', d)
-  }
+  const base = props.modelValue instanceof Date ? new Date(props.modelValue) : new Date()
+  base.setHours(hours, minutes, 0, 0)
+  emit('update:modelValue', base)
+  emit('change', base)
 }
 
 function clear(e: MouseEvent) {
@@ -146,6 +146,7 @@ const sizeClasses: Record<string, string> = {
     <!-- Inline -->
     <div v-if="display === 'inline'" class="border border-surface-200 rounded-xl overflow-hidden bg-surface-0 shadow-sm p-2">
       <CalendarGrid
+          v-if="mode !== 'time'"
           :model-value="calendarValue"
           :mode="mode as DatePickerMode"
           :min-date="minDate"
@@ -156,7 +157,7 @@ const sizeClasses: Record<string, string> = {
           @hover="hoverDate = $event"
       />
       <TimeSelector
-          v-if="mode === 'datetime'"
+          v-if="mode === 'datetime' || mode === 'time'"
           :model-value="modelValue instanceof Date ? modelValue : null"
           @change="onTimeChange"
       />
@@ -223,6 +224,7 @@ const sizeClasses: Record<string, string> = {
           >
             <div class="bg-surface-0 border border-surface-200 rounded-xl shadow-lg overflow-hidden p-2">
               <CalendarGrid
+                  v-if="mode !== 'time'"
                   :model-value="calendarValue"
                   :mode="mode as DatePickerMode"
                   :min-date="minDate"
@@ -233,7 +235,7 @@ const sizeClasses: Record<string, string> = {
                   @hover="hoverDate = $event"
               />
               <TimeSelector
-                  v-if="mode === 'datetime'"
+                  v-if="mode === 'datetime' || mode === 'time'"
                   :model-value="modelValue instanceof Date ? modelValue : null"
                   @change="onTimeChange"
               />

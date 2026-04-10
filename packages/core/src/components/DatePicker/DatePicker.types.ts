@@ -1,8 +1,8 @@
 import type { InputSize } from '../Input'
 
-export type DatePickerMode = 'date' | 'range' | 'datetime'
-export type DatePickerDisplay = 'inline' | 'dropdown' | 'button'
-export type DatePickerView = 'days' | 'months' | 'years'
+export type DatePickerMode = 'date' | 'range' | 'datetime' | 'time';
+export type DatePickerDisplay = 'inline' | 'dropdown' | 'button';
+export type DatePickerView = 'days' | 'months' | 'years';
 export type WeekStart = 0 | 1
 
 export interface DatePickerProps {
