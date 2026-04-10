@@ -24,6 +24,7 @@ export * from './components/Scrollable'
 export * from './components/Pagination'
 export * from './components/ColorPicker'
 export * from './components/ProgressBar'
+export * from './components/AutoComplete'
 // Composables
 // export * from './composables'
 
